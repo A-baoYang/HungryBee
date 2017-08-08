@@ -3,9 +3,9 @@ class SessionsController < ApplicationController
     end
 
     def create
-        user = Order.find_by(name: params[:name])
-        if order && order.authenticate(params[:password])
-            session[:order_id] = user.id
+        user = User.find_by(name: params[:name])
+        if user && user.authenticate(params[:password])
+            session[:user_id] = user.id
             redirect_to root_path
         else
             redirect_to login_path
