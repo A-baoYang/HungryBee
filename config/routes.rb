@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
-  resources :orders
+  
+  root 'orders#index'
+  
+  resources :orders do 
+    member do 
+      post :vote
+    end
+    resources :comments, only: [:create] do
+      member do
+        post :vote
+      end
+    end
+  end
 
   get '/orders' => 'orders#index'
   get '/orders/new' => 'orders#new'

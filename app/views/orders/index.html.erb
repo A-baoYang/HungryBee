@@ -18,6 +18,17 @@
         <td><%= order.name %></td>
         <td><%= order.phone %></td>
         <td><%= order.description %></td>
+        <td><%= order.total_votes %></td>
+        <td>
+          <%= link_to vote_order_path(order, vote: true), class: "btn btn-primary", method: 'post' do %>
+          👍
+          <% end %>
+        </td>
+        <td>
+          <%= link_to vote_order_path(order, vote: false), class: "btn btn-danger", method: 'post' do %>
+          🔫
+          <% end %>
+        </td>
         <td><%= link_to 'Show', order, class: 'btn btn-info' %></td>
         <td><%= link_to 'Edit', edit_order_path(order), class: 'btn btn-success' %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>

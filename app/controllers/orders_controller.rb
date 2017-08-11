@@ -5,17 +5,26 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.all
-    @order = Order.new
+  #  @order = Order.new
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @comment = Comment.new
+  #  @comments = @order.comments
   end
 
   # GET /orders/new
   def new
     @order = Order.new
+  end
+
+  def vote
+    @order = Order.find(params[:id])
+    @vote = Vote.create(voteable: @order, creator: current_user, vote: params[:vote])
+    
+    redirect_to root_path
   end
 
   # GET /orders/1/edit
@@ -29,7 +38,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.html { redirect_to order_path(@order), notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -43,7 +52,7 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to order_path(@order), notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }
@@ -72,4 +81,5 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:name, :phone, :description)
     end
+
 end
