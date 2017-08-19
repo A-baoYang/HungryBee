@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @comment = Comment.new
-  #  @comments = @order.comments
+    @comments = @order.comments
   end
 
   # GET /orders/new
@@ -35,16 +35,23 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
+    @order.user = current_user
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to order_path(@order), notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
+    if @order.save
+      redirect_to order_path(@order)
+    else
+      render :new
     end
+
+    # respond_to do |format|
+    #   if @order.save
+    #     format.html { redirect_to @order, notice: 'Order was successfully created.' }
+    #     format.json { render :show, status: :created, location: @order }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @order.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /orders/1
@@ -52,7 +59,7 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to order_path(@order), notice: 'Order was successfully updated.' }
+        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }

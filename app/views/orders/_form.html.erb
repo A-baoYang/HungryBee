@@ -10,7 +10,17 @@
       </ul>
     </div>
   <% end %>
+<% if controller.action_name == "new" %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field(:name, value: current_user.name) %>
+  </div>
 
+  <div class="field">
+    <%= f.label :phone %>
+    <%= f.text_field(:phone, value: current_user.phone) %>
+  </div>
+<% else %> 
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -20,6 +30,7 @@
     <%= f.label :phone %>
     <%= f.text_field :phone %>
   </div>
+<% end %>
 
   <div class="field">
     <%= f.label :description %>

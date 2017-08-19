@@ -1,16 +1,16 @@
-<%= render '/shared/title', title: '使用者註冊'%>
+<%= render '/shared/title', title: '使用者註冊' %>
 
 <div class="well col-md-6">
   <%= form_for @user do |f| %>
   <div class="form-group">
     <%= label_tag :name %>
     <br>
-    <%= text_field_tag :name, params[:name] %>
+    <%= text_field_tag :name %>
   </div>
   <div class="form-group">
     <%= label_tag :password %>
     <br>
-    <%= password_field_tag :password, params[:password] %>
+    <%= password_field_tag :password %>
   </div>
   <br>
   <%= f.submit(@user.new_record? ? '註冊' : 'Update Profile', class: 'btn btn-success') %>
