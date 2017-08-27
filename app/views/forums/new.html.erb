@@ -1,0 +1,43 @@
+<%= render '/shared/title', title: 'Ask Anything!' %>
+
+<div class="well col-md-6">
+  <%= form_for @forum do |f| %>
+  <div class="form-group">
+    <%= label_tag :issue %>
+    <br>
+    <%= text_field_tag :issue %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :description %>
+    <br>
+    <%= text_area_tag :description %>
+  </div>
+  <br>
+  <%= f.submit class: 'btn btn-success' %>
+  <% end %>
+</div>
+
+<!--
+<h1>New Post/h1>
+
+<%= form_for @forum do |f| %>
+
+    <div class="form-group">
+        <%= f.label :issue %>
+        <%= f.text_field :issue, class: 'form-control col-sm-3', placeholder: 'Is Social Listening Useful?' %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, class: 'form-control col-sm-3', placeholder: 'Last time I use it on my work...' %>
+    </div>
+
+
+    <div class="actions">
+        <%= f.submit class: 'btn btn-primary' %>
+    </div>
+
+    
+
+<% end %>
+-->

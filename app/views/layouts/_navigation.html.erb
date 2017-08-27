@@ -7,8 +7,10 @@
             <ul class="nav navbar-nav">
                 <% if logged_in? %>
                     <li><%= link_to "新增訂單", new_order_path %></li>
+                    <li><%= link_to "討論區", forums_path %></li>   
                 <% else %>
                     <li><%= link_to "註冊", register_path %></li>
+                    <li><%= link_to "討論區", forums_path %></li>
                 <% end %>   
             </ul>
             <ul class="nav navbar-nav navbar-right">
