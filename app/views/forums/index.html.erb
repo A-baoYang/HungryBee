@@ -2,7 +2,7 @@
 
 <%= render '/shared/title', title: "討論區" %>
 
-<%= link_to 'Ask Something...', new_content_path, class: 'btn btn-warning' %>
+<%= link_to 'Ask Something...', new_forum_path, class: 'btn btn-warning' %>
 <hr>
 
 <% @forums.each do |forum| %>
