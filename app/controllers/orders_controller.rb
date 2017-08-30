@@ -34,12 +34,15 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+    binding.pry
     @order = Order.new(order_params)
     @order.user = current_user
 
     if @order.save
+      flash[:success] = "order created!"
       redirect_to order_path(@order)
     else
+      flash[:danger] = "you forgot to enter some data!"
       render :new
     end
 

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<%= render '/shared/title', title: "精選內容" %>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>標題</th>
+      <th>內文</th>
+      <th>作者</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contents.each do |content| %>
+      <tr>
+        <td><%= content.title %></td>
+        <td><%= content.essay %></td>
+        <td><%= content.nickname%></td>
+
+        <td><%= link_to 'Show', content, class: 'btn btn-info' %></td>
+        <td><%= link_to 'Edit', edit_content_path(content), class: 'btn btn-success' %></td>
+        <td><%= link_to 'Destroy', content, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if logged_in? %>
+<%= link_to 'New Post', new_content_path, class: 'btn btn-warning' %>
+<% end %>

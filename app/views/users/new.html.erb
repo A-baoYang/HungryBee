@@ -5,12 +5,12 @@
   <div class="form-group">
     <%= label_tag :name %>
     <br>
-    <%= text_field_tag :name %>
+    <%= f.text_field :name %>
   </div>
   <div class="form-group">
     <%= label_tag :password %>
     <br>
-    <%= password_field_tag :password %>
+    <%= f.password_field :password %>
   </div>
   <br>
   <%= f.submit(@user.new_record? ? '註冊' : 'Update Profile', class: 'btn btn-success') %>

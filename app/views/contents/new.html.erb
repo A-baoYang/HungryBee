@@ -1,0 +1,23 @@
+<%= render '/shared/title', title: 'New Essay!' %>
+
+<div class="well col-md-6">
+  <%= form_for @content do |f| %>
+  <div class="form-group">
+    <%= label_tag :nickname %>
+    <br>
+    <%= f.text_field :nickname %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :title %>
+    <br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :essay %>
+    <br>
+    <%= f.text_area :essay %>
+  </div>
+  <br>
+  <%= f.submit class: 'btn btn-success' %>
+  <% end %>
+</div>

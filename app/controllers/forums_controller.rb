@@ -17,7 +17,7 @@ class ForumsController < ApplicationController
     end
 
     def create 
-        @forum = Forum.new(forum_params)
+        @forum = Forum.new({issue: params[:issue], description: params[:description]})
         @forum.user = current_user
 
         if @forum.save

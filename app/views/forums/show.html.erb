@@ -17,29 +17,7 @@
   </tbody>
 </table>
 
-<!--
-<hr>
 
-<% @comments.each do |comment| %>
-  <div class="row well">
-    <p>
-      <%= comment.user.name %> : 
-      <%= comment.content %>
-    </p>
-  </div>
-<% end %>
-
-
-<%= form_for([@order, @comment]) do |f| %>
-  <div class="row">
-    <%= f.text_area :content, rows: 3, class: 'col-md-4' %>
-    <div class="col-md-2">
-      <%= f.submit 'comment', class: 'btn btn-primary'%>
-    </div>
-  </div>
-  <br>
-<% end %>
--->
 
 <% if logged_in? %>
 <%= link_to 'Edit', edit_forum_path(@forum), class: 'btn btn-default' %> |

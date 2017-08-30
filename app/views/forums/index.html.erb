@@ -16,18 +16,8 @@
       <tr>
         <td><%= forum.issue %></td>
         <td><%= forum.description %></td>
-<!--        <td><%= order.total_votes %></td>
-        <td>
-          <%= link_to vote_order_path(order, vote: true), class: "btn btn-primary", method: 'post' do %>
-          👍
-          <% end %>
-        </td>
-        <td>
-          <%= link_to vote_order_path(order, vote: false), class: "btn btn-danger", method: 'post' do %>
-          🔫
-          <% end %>
-        </td> -->
-        <td><%= link_to 'Show', forum, class: 'btn btn-info' %></td>
+
+        <td><%= link_to 'Show', forum_path(forum), class: 'btn btn-info' %></td>
         <td><%= link_to 'Edit', edit_forum_path(forum), class: 'btn btn-success' %></td>
         <td><%= link_to 'Destroy', forum, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
       </tr>
@@ -37,5 +27,5 @@
 
 <br>
 <% if logged_in? %>
-<%= link_to 'New Post', forums_new_path, class: 'btn btn-warning' %>
+<%= link_to 'New Post', new_forum_path, class: 'btn btn-warning' %>
 <% end %>
