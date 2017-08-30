@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <%= link_to "HungryBee", root_path, class: 'navbar-brand' %>
+            <%= link_to "DataMixContent LAB", root_path, class: 'navbar-brand' %>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
@@ -11,6 +11,7 @@
                     <li><%= link_to "討論區", forums_path %></li>
                 <% else %>
                     <li><%= link_to "註冊", register_path %></li>
+                    <li><%= link_to "精選內容", contents_path %></li>
                     <li><%= link_to "討論區", forums_path %></li>
                 <% end %>   
             </ul>

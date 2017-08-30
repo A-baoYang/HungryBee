@@ -1,31 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<%= render '/shared/title', title: "Forum" %>
+<%= render '/shared/title', title: "討論區" %>
 
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Issue</th>
-      <th>Description</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+<%= link_to 'Ask Something...', new_content_path, class: 'btn btn-warning' %>
+<hr>
 
-  <tbody>
-    <% @forums.each do |forum| %>
-      <tr>
-        <td><%= forum.issue %></td>
-        <td><%= forum.description %></td>
-
-        <td><%= link_to 'Show', forum_path(forum), class: 'btn btn-info' %></td>
-        <td><%= link_to 'Edit', edit_forum_path(forum), class: 'btn btn-success' %></td>
-        <td><%= link_to 'Destroy', forum, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<% if logged_in? %>
-<%= link_to 'New Post', new_forum_path, class: 'btn btn-warning' %>
+<% @forums.each do |forum| %>
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <h2><strong><a datd-toggle="collapse" data-parent="#accordion" href="#collapse1">Q: <%= forum.issue %></a></strong></h2>
+      </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse in">
+      <div class="panel-body" style="word-break: break-all"> <%#word-break 自動換行%>
+        <%= forum.description %>
+      </div>
+        <%= link_to 'Answer!', forum_path(forum), class: 'btn btn-success' %>
+        <% if logged_in? %>
+          <%= link_to 'Edit', edit_forum_path(forum), class: 'btn btn-info' %>
+          <%= link_to 'Destroy', forum, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        <% end %>
+    </div>
+  </div>
+</div>
 <% end %>

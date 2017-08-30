@@ -34,7 +34,6 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    binding.pry
     @order = Order.new(order_params)
     @order.user = current_user
 
